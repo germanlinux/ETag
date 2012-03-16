@@ -1,0 +1,17 @@
+{
+    "name": "ETag"
+  , "version": "0.0.1"
+  , "description": "implementation of a cache for the web client based on ETag"
+  , "homepage": ""
+  , "keywords": ["web", "HTTP", "cache"]
+  , "author": "Eric GERMAN  <german.erci@gmail.com>"
+  , "repository":{
+        "type": "git"
+      , "url": "https://github.com/xxxxxx"
+    }
+  , "main": "index"
+  , "engines": { "node": ">= 0.4.0" }
+  , "scripts": {
+        "test": "node tests/run.js"
+    }
+}
