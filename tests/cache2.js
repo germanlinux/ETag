@@ -1,9 +1,9 @@
 (function() {
-  var Etag, assert, chaine, checkDone, my_etag, myetag, puts, remainingTests;
+  var ETag, assert, chaine, checkDone, my_etag, myetag, myetag2, puts, remainingTests;
   puts = console.log;
   assert = require('assert');
-  Etag = require('../Etag.js');
-  remainingTests = 3;
+  ETag = require('../Etag.js');
+  remainingTests = 5;
   puts("nb test: " + remainingTests);
   checkDone = function() {
     remainingTests = remainingTests - 1;
@@ -12,7 +12,7 @@
     }
   };
   puts("Debut tests: " + __filename);
-  myetag = new Etag;
+  myetag = new ETag;
   myetag.createETag({
     'url': '/foo/bar.png',
     'etag': '1234567890'
@@ -28,7 +28,7 @@
   }
   chaine = "Test recherche avec ETAG";
   puts(chaine);
-  my_etag = Etag.find('/foo/bar.png');
+  my_etag = ETag.Find('/foo/bar.png');
   try {
     assert.equal(my_etag, '1234567890');
     puts(chaine + '  : ok');
@@ -36,10 +36,36 @@
   } catch (error) {
     puts("ERROR: " + error.expected + " (expected) <==> (actuel) " + error.actual);
   }
-  my_etag = Etag.find('/foo/b.png');
+  my_etag = ETag.Find('/foo/b.png');
   chaine = "Test recherche avec mauvais ETAG";
   try {
     assert.notEqual(my_etag, '1234567890');
+    puts(chaine + '  : ok');
+    checkDone();
+  } catch (error) {
+    puts("ERROR: " + error.expected + " (expected) <==> (actuel) " + error.actual);
+  }
+  chaine = "Test class avec ETAG";
+  myetag2 = new ETag;
+  myetag2.createETag({
+    'url': '/foo/bor.jpeg',
+    'etag': '1234567890123'
+  });
+  puts(chaine);
+  puts(ETag.List());
+  puts(ETag.Items());
+  try {
+    assert.equal(ETag.Items(), 2);
+    puts(chaine + '  : ok');
+    checkDone();
+  } catch (error) {
+    puts("ERROR: " + error.expected + " (expected) <==> (actuel) " + error.actual);
+  }
+  chaine = "RAZ des informations ETag";
+  puts(chaine);
+  ETag.Raz();
+  try {
+    assert.equal(ETag.Items(), 0);
     puts(chaine + '  : ok');
     checkDone();
   } catch (error) {

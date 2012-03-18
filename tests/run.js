@@ -3,7 +3,9 @@ var spawn = require('child_process').spawn
   ;
 
 var tests = [
-    'cache2.js'
+    'cache1.js',
+    'cache2.js',
+    'calcul1.js'
   ]; 
 
 var next = function () {
