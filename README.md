@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/germanlinux/ETag.png)](http://travis-ci.org/germanlinux/ETag)
 Bienvenue dans le module ETag pour node.js 
 
 This module computes ETag sum  for locals files
